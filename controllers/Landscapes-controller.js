@@ -15,7 +15,7 @@ exports.landscapes_detail = function(request, response, next){
     },function(err, results) {
         if (err) { return next(err); }
         if (results.landscapes==null) { // No results.
-            var err = new Error('Book not found');
+            var err = new Error('The Landscapes not found');
             err.status = 404;
             return next(err);
         }
