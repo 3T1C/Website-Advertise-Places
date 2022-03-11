@@ -1,6 +1,17 @@
 var express = require('express')
 var app = express()
 
+//connect to mongoDB
+var mongoose = require('mongoose');
+  
+ mongoose.connect('mongodb://localhost/web-app-advertise-places', function (err) {
+  
+    if (err) throw err;
+  
+    console.log('Successfully connected');
+  
+ });
+
 app.set('view engine', 'ejs')
 
 var router = express.Router()
