@@ -39,6 +39,11 @@ router.get('/login', function (request, response){
 router.post('/login', urlencodedParser, function (request, response){
     controller('login').post(request, response, webconfig, model)
 })
+
+router.get('/logout', function (request, response){
+    controller('logout').get(request, response, webconfig)
+})
+
 app.use(webconfig.root, router)
 
 //Start web app
