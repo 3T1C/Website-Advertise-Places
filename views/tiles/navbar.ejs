@@ -7,7 +7,12 @@
             <a href="#products" class="w3=bar-item w3-button">Places</a>
             <a href="#about" class="w3=bar-item w3-button">About</a>
             <a href="#contact" class="w3=bar-item w3-button">Contact</a>
-            <a href="login" class="w3=bar-item w3-button w3-text-red">Login</a>
+            <% if(logged){ %>
+                <a href="<%= root %>logout" class="w3-bar-item w3-button w3-text-red">Logout</a>    
+            <% } else{ %>
+                <a href="<%= root %>login" class="w3-bar-item w3-button w3-text-red">Login</a>                                
+            <% } %>             
+
         </div>
     </div>
 </div>
