@@ -4,16 +4,16 @@ var model = require('./model/model').create(datasource)
 var express = require('express')
 var app = express()
 
-//connect to mongoDB
-// var mongoose = require('mongoose');
+// connect to mongoDB
+var mongoose = require('mongoose');
 
-//  mongoose.connect('mongodb://localhost/web-app-advertise-places', function (err) {
+ mongoose.connect('mongodb+srv://test:test@demo.svgfw.mongodb.net/Demo?retryWrites=true&w=majority', function (err) {
 
-//     if (err) throw err;
+    if (err) throw err;
 
-//     console.log('Successfully connected');
+    console.log('Successfully connected');
 
-//  });
+ });
 
 app.set('view engine', 'ejs')
 app.use(require('cookie-parser')())
@@ -42,6 +42,11 @@ router.post('/login', urlencodedParser, function (request, response){
 
 router.get('/logout', function (request, response){
     controller('logout').get(request, response, webconfig)
+})
+
+var fetchController = require('./controllers/fetch-controller')
+router.get('/fetch-data', function (request, response){
+    controller('landscapes').get(request, response, webconfig)
 })
 
 app.use(webconfig.root, router)
