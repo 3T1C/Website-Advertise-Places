@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="showroom.css">
+</head>
+
+<body>
+    <%- include ('navbar') %>
+        <br><br><br>
+
+        <style>
+            h1 {
+                text-align: center;
+            }
+
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <div class="w3-row-padding w3-grayscale">
+            <div class=" w3-margin-bottom">
+                <div class="w3-display-container">
+                    <h1>HANG ĐẦU GỖ</h1>
+                    <img class="center" src="images/products/hang-dau-go-2.jpg" style="width:50%">
+                    <% if(logged){ %>
+                        <div class="w3-display-bottomright w3-row" style="width: 100%">
+                            <!-- <a class="w3-half w3-button w3-blue">Edit</a>
+                            <a class="w3-half w3-button w3-red">Delete</a> -->
+                        </div>
+                        <% } %>
+
+
+                            <p>Giữa non nước mây trời vịnh Hạ Long tuyệt mỹ, một cái hang mang tên rất mộc mạc dân
+                                dã.Hang Đầu
+                                Gỗ rộng khoảng 5000m2, nằm trên độ cao 27m so với mực nước biển. Hang động nằm trên đảo
+                                Đầu Gỗ
+                                nằm cạnh hang Thiên Cung. Từ phía xa nhìn lại, cửa hang có màu xanh lam hình một con sứa
+                                biển,
+                                qua 90 bậc đá xây ta tới cửa hang. Sở dĩ gọi là hang Đầu Gỗ, theo truyền thuyết xưa kể
+                                rằng:
+                                Trong cuộc kháng chiến chống quân Nguyên Mông, Trần Hưng Đạo đã cho chuẩn bị nhiều cọc
+                                gỗ lim ở
+                                đây để cắm xuống lòng sông Bạch Đằng, tạo nên một trận thuỷ chiến vang lừng trong lịch
+                                sử. </p>
+                </div>
+            </div>
+        </div>
+        <!-- <% for(let l of landscapes){ %>
+            <h1>
+                <%= l.name %>
+            </h1>
+            <h3>
+                <%= l.detail %>
+            </h3>
+            <% } %> -->
+
+        <%- include('footer') %>
+
+</body>

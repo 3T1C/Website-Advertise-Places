@@ -7,17 +7,17 @@ var LandscapesSchema = new Schema({
         type: String
     }
 });
-landscapesTable = mongoose.model('landscapes', LandscapesSchema);
+// landscapesTable = mongoose.model('landscapes', LandscapesSchema);
 
 // export model
-// module.exports = mongoose.model('landscapes', LandscapesSchema)
+module.exports = mongoose.model('landscapes', LandscapesSchema)
 
-module.exports = {
-    fetchData:function(callback){
-        var landscapesData = landscapesTable.find({});
-        landscapesData.exec(function(err, data){
-            if(err) throw err
-            return callback(data)
-        })
-    }
-}
+// module.exports = {
+//     fetchData:function(callback){
+//         var landscapesData = landscapesTable.find({});
+//         landscapesData.exec(function(err, data){
+//             if(err) throw err
+//             return callback(data)
+//         })
+//     }
+// }

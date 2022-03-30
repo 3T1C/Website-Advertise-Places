@@ -1,6 +1,6 @@
 var datasource = require('./datasource/simple-datasource')
 var model = require('./model/model').create(datasource)
-
+var landscapes = require('./model/Landscapes')
 var express = require('express')
 var app = express()
 
@@ -14,12 +14,12 @@ mongoose.connect('mongodb+srv://test:test@demo.svgfw.mongodb.net/demo?retryWrite
     //     console.log(result);
     //     db.close();
     // })
-    if (err) throw err;
-    db.collection('user').find({}).toArray( function (err, result) {
-        if (err) throw err;
-        console.log(result);
-        db.close();
-    })
+    // if (err) throw err;
+    // db.collection('user').find({}).toArray( function (err, result) {
+    //     if (err) throw err;
+    //     console.log(result);
+    //     db.close();
+    // })
     console.log('Successfully connected');
 
 });
@@ -30,7 +30,8 @@ app.use(require('cookie-parser')())
 var router = express.Router()
 
 router.use(express.static('public'))
-
+var multer = require('multer')
+var upload = multer({ dest: 'tmp/'})
 var webconfig = require('./webconfig')
 var urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
@@ -56,11 +57,18 @@ router.get('/logout', function (request, response) {
 
 var fetchController = require('./controllers/fetch-controller');
 const cookieParser = require('cookie-parser');
-const Landscapes = require('./model/Landscapes');
-router.get('/fetch-data', function (request, response) {
-    controller('landscapes').get(request, response, webconfig)
+
+router.get('/detail', function (request, response) {
+    controller('detail').get(request, response, webconfig, model)
 })
 
+router.get('/edit-general-info', function (request, response) {
+    controller('edit-general-info').get(request, response, webconfig, model)
+})
+
+router.post('/edit-general-info', upload.single('featureImage'), function (request, response) {
+    controller('edit-general-info').post(request, response, webconfig, model)
+})
 app.use(webconfig.root, router)
 
 //Start web app
