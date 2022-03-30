@@ -76,6 +76,25 @@ router.get('/edit-contact', function (request, response) {
 router.post('/edit-contact', urlencodedParser, function (request, response) {
     controller('edit-contact').post(request, response, webconfig, model)
 })
+router.get('/add-product', function (request, response) {
+    controller('add-product').get(request, response, webconfig, model)
+})
+
+router.post('/add-product', upload.single('productImage'), function (request, response) {
+    controller('add-product').post(request, response, webconfig, model)
+})
+router.get('/edit-product', function (request, response) {
+    controller('edit-product').get(request, response, webconfig, model)
+})
+
+router.post('/edit-product', upload.single('productImage'), function (request, response) {
+    controller('edit-product').post(request, response, webconfig, model)
+})
+
+router.get('/delete-product', function (request, response) {
+    controller('delete-product').get(request, response, webconfig, model)
+})
+
 
 app.use(webconfig.root, router)
 
