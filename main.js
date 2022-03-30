@@ -95,6 +95,25 @@ router.get('/delete-product', function (request, response) {
     controller('delete-product').get(request, response, webconfig, model)
 })
 
+router.get('/add-about', function (request, response) {
+    controller('add-about').get(request, response, webconfig, model)
+})
+
+router.post('/add-about', upload.single('productImage'), function (request, response) {
+    controller('add-about').post(request, response, webconfig, model)
+})
+router.get('/edit-about', function (request, response) {
+    controller('edit-about').get(request, response, webconfig, model)
+})
+
+router.post('/edit-about', upload.single('productImage'), function (request, response) {
+    controller('edit-about').post(request, response, webconfig, model)
+})
+
+router.get('/delete-about', function (request, response) {
+    controller('delete-about').get(request, response, webconfig, model)
+})
+
 
 app.use(webconfig.root, router)
 
