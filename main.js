@@ -31,7 +31,7 @@ var router = express.Router()
 
 router.use(express.static('public'))
 var multer = require('multer')
-var upload = multer({ dest: 'tmp/'})
+var upload = multer({ dest: 'tmp/' })
 var webconfig = require('./webconfig')
 var urlencodedParser = require('body-parser').urlencoded({ extended: false })
 
@@ -69,6 +69,14 @@ router.get('/edit-general-info', function (request, response) {
 router.post('/edit-general-info', upload.single('featureImage'), function (request, response) {
     controller('edit-general-info').post(request, response, webconfig, model)
 })
+router.get('/edit-contact', function (request, response) {
+    controller('edit-contact').get(request, response, webconfig, model)
+})
+
+router.post('/edit-contact', urlencodedParser, function (request, response) {
+    controller('edit-contact').post(request, response, webconfig, model)
+})
+
 app.use(webconfig.root, router)
 
 //Start web app

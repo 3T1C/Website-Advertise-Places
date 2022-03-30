@@ -29,3 +29,12 @@ exports.saveGeneralInfo = function (info, featureImageTmpPath, callback) {
         callback(false)
     })
 }
+exports.loadContact = function (callback){
+    fs.readFile(path('contact.txt'), function(err,data){
+        callback(data)
+    })
+}
+
+exports.saveContact = function (text, callback){
+    fs.writeFile(path('contact.txt'), text, callback)
+}

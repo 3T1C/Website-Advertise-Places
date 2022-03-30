@@ -23,6 +23,21 @@ exports.create = function (datasource) {
                 }
                 callback(false)
             })
+            
+        },
+        getContact : datasource.loadContact,
+        editContact : function(text, callback){
+            if(text.trim() == ''){
+                callback('Contact text cannot be empty')
+                return
+            }
+            datasource.saveContact(text, function(err){
+                if(err){
+                    callback('Could not save Contact text')
+                    return
+                }
+                callback(false)
+            })
         }
     }
 }
