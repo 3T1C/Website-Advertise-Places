@@ -30,11 +30,12 @@ exports.post = function(request, response, webconfig, model) {
 
     var productId = request.body.productId
     var productName = request.body.productName
+    var productDetail = request.body.productDetail
     var imageTmpPath = request.file ? request.file.path : ''
 
-    model.addProduct(productId, productName, imageTmpPath, function (errorMessage) {
+    model.addProduct(productId, productName, productDetail, imageTmpPath, function (errorMessage) {
         if (errorMessage) {
-            var product = { id : productId, name : productName }
+            var product = { id : productId, name : productName, detail: productDetail }
             render(response, webconfig, product, errorMessage, model)
             return
         }

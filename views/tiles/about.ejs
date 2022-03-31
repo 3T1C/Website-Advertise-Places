@@ -1,42 +1,8 @@
-<div class="w3-container w3-padding-32" id="products">
+<div class="w3-container w3-padding-32" id="about">
   <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
 </div>
 
 
-<% for (var i = 0; i < products.length ; ++i){
-  var product = products[i]
-  var isBeginRow = i % 4 == 0
-  var isEndRow = ( i % 4 == 3) || (i == products.length - 1)
-
-  if(isBeginRow){ %>
-      <div class="w3-row-padding">
-  <% } %>
-
-  <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-          <div class="w3-display-topleft w3-black w3-padding"><%= product.name %></div>
-          <img src="images/about/<%= product.id %>.jpg" alt="<%= product.name %>" width="500px" height="333px" style="width: 100%">
-          <p><%= product.detail %></p>
-          <% if(logged){ %>
-          <div class="w3-display-bottomright w3-row" style="width: 100%">
-              <a class="w3-half w3-button w3-blue" href="<%= root %>edit-about?id=<%= product.id %>">Edit</a>
-              <a class="w3-half w3-button w3-red" href="delete-about?id=<%= product.id %>"
-                  onclick="confirm('Are you sure you want to delete this landscape?')">Delete</a>
-          </div>
-          
-          <% } %>
-      </div>
-  </div>
-
-
-  <% if (isEndRow) { %>
-      </div>
-  <% } %>
-
-<% } %>    
-
-<% if(logged){ %>
-<div class="w3-padding">
-  <a class="w3-button w3-green w3-right" title="Add Landscape" href="<%= root %>add-about" >+</a>
+<div class="w3-container">
+  <img src="images/vinhhalong.jpg" class="w3-image" style="width:100%" >
 </div>
-<% } %>

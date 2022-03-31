@@ -16,6 +16,7 @@
         <div class="w3-display-container">
             <div class="w3-display-topleft w3-black w3-padding"><%= product.name %></div>            
             <img src="images/products/<%= product.id %>.jpg" alt="<%= product.name %>" width="500px" height="333px" style="width: 100%">
+            <br><br><p><%= product.detail %></p><br><br>
             <% if(logged){ %>
             <div class="w3-display-bottomright w3-row" style="width: 100%">
                 <a class="w3-half w3-button w3-blue" href="<%= root %>edit-product?id=<%= product.id %>">Edit</a>

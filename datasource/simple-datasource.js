@@ -102,11 +102,11 @@ function getNewProductId(folder, callback){
         callback(max +1)
     })
 }
-exports.addProduct = function(editProductId, name, imageTmpPath, callback){
+exports.addProduct = function(editProductId, name, detail, imageTmpPath, callback){
     var folder = getProductsFolder()
     
     var saveProduct = function(id){
-        var product = { name : name }
+        var product = { name : name, detail: detail }
         fs.writeFile(folder + '/' + id + '.json', JSON.stringify(product), function(err){
             if(err){
                 callback(err)
@@ -139,62 +139,3 @@ exports.deleteProduct = function (productId, callback){
     })
 }
 
-exports.loadAbouts = function(callback){
-    var folder = getAboutsFolder()
-
-    fs.readdir(folder, function (err, files){
-        var count = 0
-        var total = files.length
-        var products = []
-        
-        for(var i = 0; i < total; ++i){
-            var filePath = folder + '/' + files[i]
-            var productId = parseProductId(files[i])
-
-            loadProduct(productId, filePath, function(product) {
-                products.push(product)
-                ++count
-                if(count == total){
-                    sortProducts(products)
-                    callback(products)
-                }
-            })
-        }
-    })
-}
-exports.addAbout = function(editProductId, name, imageTmpPath, callback){
-    var folder = getAboutsFolder()
-    
-    var saveProduct = function(id){
-        var product = { name : name }
-        fs.writeFile(folder + '/' + id + '.json', JSON.stringify(product), function(err){
-            if(err){
-                callback(err)
-                return
-            }
-            if(imageTmpPath != '')
-                fs.rename(imageTmpPath, 'public/images/about/' + id + '.jpg', callback)
-            else
-                callback(false)
-        })
-    }
-    
-    if (editProductId == 0)
-        getNewProductId(folder, saveProduct)
-    else
-        saveProduct(editProductId)
-}
-exports.loadSingleAbout = function (productId, callback){
-    var productFilePath = getAboutsFolder() + '/' + productId + '.json'
-    loadProduct(productId, productFilePath, callback)
-}
-
-exports.deleteAbout = function (productId, callback){
-    fs.unlink(getAboutsFolder() + '/' + productId + '.json', function(err){
-        if (err){
-            callback(err)
-            return
-        }
-        fs.unlink('public/images/about' + productId + '.jpg', callback)
-    })
-}
